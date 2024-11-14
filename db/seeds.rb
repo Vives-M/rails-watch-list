@@ -21,11 +21,12 @@ Movie.destroy_all
 puts "Retrieving movies..."
 
 movies_results.each do |movie|
+  p movie["poster_path"]
     Movie.create!(
     title: movie["original_title"],
     overview: movie["overview"],
-    rating: movie["result.vote_average"],
-    poster_url: movie["result.poster_path"],
+    rating: movie["vote_average"],
+    poster_url: movie["poster_path"],
     )
     puts "One movie retrieved !"
 end
