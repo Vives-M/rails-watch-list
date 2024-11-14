@@ -1,1 +1,11 @@
-<h1>Details of one list</h1>
+<h1>Details of <%= @list.name %> </h1>
+<ul>
+
+<% @list.bookmarks.each do |bookmark| %>
+<li class="list-group-item list-group-item-info"><%= bookmark.comment %></li>
+<% end %>
+</ul>
+
+
+<div class="btn btn-info"><%= link_to "ajouter un movie", new_list_bookmark_path(@list) %></div>
+<button class="btn btn-info"> <%= link_to "Retour aux listes", lists_path %> </button>

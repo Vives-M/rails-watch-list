@@ -32,3 +32,13 @@ movies_results.each do |movie|
 end
 
 puts "#{Movie.count} movies created !"
+
+List.create!(
+  name: "Action"
+)
+
+List.create!(
+  name: "Romance"
+)
+
+puts "#{List.count} lists created"
