@@ -1,9 +1,10 @@
 <h1>Details of <%= @list.name %> </h1>
 <ul>
-
-<% @list.bookmarks.each do |bookmark| %>
-<li class="list-group-item list-group-item-info"><%= bookmark.comment %></li>
-<% end %>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li class="list-group-item list-group-item-info"><%= Movie.find(params[:id]).title %> -
+      <br><%= bookmark.comment %>
+    </li>
+  <% end %>
 </ul>
 
 
