@@ -1,5 +1,8 @@
-<div class="container">
-  <h1>Add a movie to <%= @list.name %></h1>
+<div class="container m-3 d-flex flex-column ">
+  <div>
+
+  <h1 class="text-center">Add a movie to <%= @list.name %></h1>
+  </div>
 
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <%= f.input :comment %>

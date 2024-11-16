@@ -1,12 +1,42 @@
-<h1>Details of <%= @list.name %> </h1>
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li class="list-group-item list-group-item-info"><%= Movie.find(params[:id]).title %> -
-      <br><%= bookmark.comment %>
-    </li>
-  <% end %>
-</ul>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 500, crop: :fill %>')">
+  Details of <%= @list.name %>
+</div>
+
+<div class="container">
+  <div class="card-group">
+    <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="col-4">
+            <div class="card-body">
+              <div class="card w-50">
+                <div class="div-position">
+                  <img src="https://image.tmdb.org/t/p/original<%=bookmark.movie.poster_url%>" class="card-img-top" alt="<%=bookmark.movie.title%> poster">
 
 
-<div class="btn btn-info"><%= link_to "ajouter un movie", new_list_bookmark_path(@list) %></div>
-<button class="btn btn-info"> <%= link_to "Retour aux listes", root_path %> </button>
+                  <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                    <i class="fa-solid fa-trash-can trash text-decoration-none"></i>
+                  <% end %>
+                </div>
+                <h5 class="card-title p-2"><%= bookmark.movie.title %></h5>
+                <p class="card-text text-overflow p-2"> <%= bookmark.movie.overview %></p>
+
+               <%# <div class="btn btn-outline-info m-2"><%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"text-decoration-none text-reset fw-semibold" %>
+              </div>
+                <p class="card-text fst-italic p-2"> "<%= bookmark.comment %>"</p>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+</div>
+<div class="d-flex justify-content-center gap-2 m-2">
+  <div class="btn btn-outline-info m-2"><%= link_to "Add a movie", new_list_bookmark_path(@list), class:"text-decoration-none text-reset fw-semibold" %></div>
+  <div class="btn btn-outline-info m-2"> <%= link_to "Back to lists", root_path, class:"text-decoration-none text-reset fw-semibold" %> </div>
+  <div class="btn btn-outline-info m-2"><%= link_to "Delete", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"text-decoration-none text-reset fw-semibold" %> </div>
+
+</div>
+
+<%# <%= cl_image_tag("fmbbalxx7ymkkxebpaj5", width: 400, height: 300, crop: :fit)%>
+
+<%# </div> %>

@@ -1,24 +1,28 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/83/cb/b2/83cbb2b10e4cd2fb81e20d53538ea068.gif);">
   <div class="container">
-    <h1>My favourite lists 🎞</h1>
+    <h1 class="text-center"><%= "My favourite lists of movies".upcase %></h1>
   </div>
 </div>
 
-    <p><% @lists.each do |list| %>
-      <li class="list-group-item list-group-item-info text-center" ><%= link_to list.name, list_path(list), class:"text-decoration-none text-reset fw-semibold"  %></li>
-    <% end %></p>
-    <div class="d-flex justify-content-center">
 
-    <button class="btn btn-secondary"> <%= link_to "Add a list", new_list_path, class:"text-decoration-none text-reset fw-semibold" %> </button>
+<div class="container">
+  <div class="row mt-5 ">
+    <% @lists.each do |list| %>
+      <div class="col-4 my-2">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            <%= link_to list.name, list_path(list), class:"text-decoration-none text-reset fw-semibold" %>
+            <%# <%= link_to "Delete", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"text-decoration-none text-reset fw-semibold" %>
+            <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash-can trash text-decoration-none"></i>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+  </div>
+    <div class="d-flex justify-content-center m-3">
+
+    <button class="btn btn-outline-info"> <%= link_to "Add a list", new_list_path, class:"text-decoration-none text-reset fw-semibold" %> </button>
     </div>
-
-<%#
-<h1></h1>
-<ul>
-<% @lists.each do |list| %>
-<%# <li class="list-group-item list-group-item-info text-center" ><%= link_to list.name, list_path(list), class:"text-decoration-none text-reset fw-semibold" </li> %>
-<%# <% end %>
-
-<%# </ul> %>
-
-<%# <button class="btn btn-secondary"> <%= link_to "Add a list", new_list_path</button> %>

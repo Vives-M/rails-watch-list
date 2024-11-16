@@ -1,5 +1,12 @@
-<h1>Here is a new list</h1>
-<%= simple_form_for [@list] do |f| %>
-  <%= f.input :name %>
-  <%= f.submit class: "btn btn-info mt-4" %>
-  <% end %>
+<div class="container m-3 d-flex justify-content-center flex-column">
+  <div>
+    <h1 class="text-center">Here is a new list</h1>
+
+  </div>
+  <%= simple_form_for [@list], class:"d-flex justify-content-center" do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit class: "btn btn-info mt-4" %>
+    <% end %>
+
+</div>

@@ -19,3 +19,63 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  opacity: 1;
+}
+
+.card-category:hover{
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+.div-position {
+  position: relative;
+}
+
+
+.trash {
+  color:#F4F4F4;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.trash:hover {
+  zoom: 125%;
+  color: $danger;
+  transition: 0.5s;
+}
+
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.text-overflow{
+  text-overflow: ellipsis;
+  overflow: scroll;
+  // white-space: nowrap ;
+  height: 150px;
+}

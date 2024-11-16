@@ -11,10 +11,11 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
+$magic: rgb(170, 84, 134);
 $body-color: $gray;
 $primary:    $blue;
 $success:    $green;
-$info:       $yellow;
+$info:       $magic;
 $danger:     $red;
 $warning:    $orange;
 

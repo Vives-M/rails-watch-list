@@ -9,7 +9,7 @@
 #   end
 require "json"
 require "open-uri"
-url = "https://tmdb.lewagon.com/movie/top_rated"
+url = "https://tmdb.lewagon.com/movie/popular"
 
 movies_serialized = URI.parse(url).read
 movies = JSON.parse(movies_serialized)
@@ -17,11 +17,11 @@ movies_results = movies["results"]
 
 puts "Cleaning database..."
 Movie.destroy_all
+List.destroy_all
 
 puts "Retrieving movies..."
 
 movies_results.each do |movie|
-  p movie["poster_path"]
     Movie.create!(
     title: movie["original_title"],
     overview: movie["overview"],
@@ -33,12 +33,13 @@ end
 
 puts "#{Movie.count} movies created !"
 
-List.create!(
-  name: "Action"
-)
+# List.create!(
+#   name: "Action"
+#   photo: "cl_image_path 'app/assets/images/banner.webp', height: 300, crop: :fill"
+# )
 
-List.create!(
-  name: "Romance"
-)
+# List.create!(
+#   name: "Romance"
+# )
 
-puts "#{List.count} lists created"
+# puts "#{List.count} lists created"
